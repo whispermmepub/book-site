@@ -1,89 +1,99 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Site</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Site</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #0b1220;
-      color: #fff;
-    }
+<style>
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:#0b1220;
+  color:white;
+}
 
-    header {
-      background: #111827;
-      padding: 18px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
+header{
+  background:#111827;
+  padding:15px;
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+}
 
-    .container {
-      padding: 15px;
-    }
+.container{
+  padding:15px;
+}
 
-    .book {
-      background: #1f2937;
-      padding: 15px;
-      margin-bottom: 12px;
-      border-radius: 12px;
-    }
+.book{
+  background:#1f2937;
+  padding:15px;
+  margin-bottom:12px;
+  border-radius:12px;
+}
 
-    .title {
-      font-size: 18px;
-      font-weight: bold;
-    }
+.title{
+  font-size:18px;
+  font-weight:bold;
+}
 
-    .desc {
-      font-size: 14px;
-      margin-top: 6px;
-      color: #cbd5e1;
-    }
+.desc{
+  font-size:14px;
+  margin-top:6px;
+  color:#cbd5e1;
+}
 
-    .btns {
-      margin-top: 10px;
-      display: flex;
-      gap: 8px;
-    }
+.btns{
+  margin-top:10px;
+  display:flex;
+  gap:8px;
+}
 
-    .btn {
-      flex: 1;
-      text-align: center;
-      padding: 8px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: white;
-      font-size: 14px;
-    }
+.btn{
+  flex:1;
+  text-align:center;
+  padding:8px;
+  border-radius:8px;
+  text-decoration:none;
+  color:white;
+  font-size:14px;
+}
 
-    .fb { background: #1877f2; }
-    .tg { background: #229ed9; }
-    .web { background: #10b981; }
-
-  </style>
+.fb{background:#1877f2;}
+.tg{background:#229ed9;}
+.web{background:#10b981;}
+</style>
 </head>
 
 <body>
 
 <header>📚 My Book Site</header>
 
-<div class="container">
+<div class="container"></div>
 
-  <div class="book">
-    <div class="title">စာအုပ်နမူနာ</div>
-    <div class="desc">ဒီနေရာမှာ စာအုပ်အညွှန်းထည့်မယ်...</div>
+<script>
+fetch('books.json')
+.then(res => res.json())
+.then(data => {
+  const container = document.querySelector('.container');
+  container.innerHTML = "";
 
-    <div class="btns">
-      <a class="btn fb" href="#">Facebook</a>
-      <a class="btn tg" href="#">Telegram</a>
-      <a class="btn web" href="#">Link</a>
-    </div>
-  </div>
+  data.forEach(book => {
+    container.innerHTML += `
+      <div class="book">
+        <div class="title">${book.title}</div>
+        <div class="desc">${book.desc}</div>
 
-</div>
+        <div class="btns">
+          <a class="btn fb" href="${book.fb}" target="_blank">Facebook</a>
+          <a class="btn tg" href="${book.tg}" target="_blank">Telegram</a>
+          <a class="btn web" href="${book.web}" target="_blank">Link</a>
+        </div>
+      </div>
+    `;
+  });
+});
+</script>
 
 </body>
 </html>
