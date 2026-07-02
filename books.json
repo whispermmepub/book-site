@@ -2,6 +2,8 @@
   {
     "id": "demo-book",
     "title": "စာအုပ်နမူနာ",
+    "author": "စာရေးသူ",
+    "cover": "https://via.placeholder.com/300x400",
     "desc": "ဒီမှာ စာအုပ်အညွှန်းရေးမယ်...",
     "fb": "#",
     "tg": "#",
